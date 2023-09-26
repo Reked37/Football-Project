@@ -15,9 +15,6 @@ class Player(db.Model, SerializerMixin):
 
     team=db.relationship('Team', back_populates='player')
 
-    def __repr__(self):
-        return f'Player {self.id}'
-
 
 class City(db.Model, SerializerMixin):
     __tablename__= 'cities'
@@ -35,8 +32,8 @@ class Team(db.Model, SerializerMixin):
     name=db.Column(db.String, nullable=False)
     mascot=db.Column(db.String)
 
-    player_id=db.Column(db.Integer, db.ForeignKey('players.id'))
-    city_id=db.Column(db.Integer, db.ForeignKey('cities.id'))
+    player_id=db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False)
+    city_id=db.Column(db.Integer, db.ForeignKey('cities.id'), unique=True)
 
     player=db.relationship('Player', back_populates='team')
-    city=db.relationship('City', back_populates='city')
+    city=db.relationship('City', back_populates='team')
