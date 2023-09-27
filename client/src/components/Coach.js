@@ -1,7 +1,7 @@
 import React from "react"
 
 
-function Coaches({passCoach}){
+function Coach({passCoach}){
     console.log(passCoach)
     const {name, coaching_position}=passCoach
     return (
@@ -15,4 +15,4 @@ function Coaches({passCoach}){
 
 
 
-export default Coaches
+export default Coach

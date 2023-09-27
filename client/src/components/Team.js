@@ -3,7 +3,7 @@ import React from "react"
 
 function Team({passTeam}){
     console.log(passTeam)
-    const {name, mascot, player_id, coach_id}=passTeam
+    const {name, mascot}=passTeam
     return (
         <div>
             <h3>Team Name: {name}</h3>

@@ -1,7 +1,7 @@
 import React from "react"
 import Coach from "./Coach"
 
-function CoachesContainer({coaches}){
+function coachesContainer({coaches}){
     console.log(coaches)
     const displayCoaches=coaches.map(coach=>{
         return <Coach passCoach={coach} key={coach.id}/>    
@@ -14,4 +14,4 @@ function CoachesContainer({coaches}){
         </div>
     )}
 
-export default CoachesContainer
+export default coachesContainer

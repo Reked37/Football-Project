@@ -5,6 +5,7 @@ import PlayersContainer from "./PlayersContainer";
 import NavBar from "./NavBar";
 import TeamsContainer from "./TeamsContainer";
 import CoachesContainer from "./CoachesContainer";
+import Add from "./Add"
 
 function App() {
   const [players, setPlayers]=useState([])
@@ -33,10 +34,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        {/* <Route path='/players/:id' element={<Players players={players} />}></Route> */}
         <Route path="/players" element={<PlayersContainer players={players} />}></Route>
         <Route path="/coaches" element={<CoachesContainer coaches={coaches}/>}></Route>
         <Route path="/teams" element={<TeamsContainer teams={teams}/>}></Route>
+        <Route path="/add" element={<Add />}></Route>
       </Routes> 
     </div>
   );

@@ -9,6 +9,7 @@ function Navbar(){
             <NavLink to="/players" >Players</NavLink>
             <NavLink to="/teams" >Teams</NavLink>
             <NavLink to="/coaches" >Coaches</NavLink>
+            <NavLink to="/add" >Add</NavLink>
         </div>
     )
 }
