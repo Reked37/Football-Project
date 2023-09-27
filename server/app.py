@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request
+from flask import request, jsonify, make_response
 from flask_restful import Resource
 
 # Local imports
@@ -19,8 +19,9 @@ def index():
 
 class Players(Resource):
     def get(self):
-        players_dict=[player.to_dict for player in Player.query.all()]
-        return jsonify(players_dict), 200
+        players_dict=[player.to_dict() for player in Player.query.all()]
+        response=make_response(jsonify(players_dict),200)
+        return response
     
     def post(self):
         json=request.get_json()
@@ -31,13 +32,15 @@ class Players(Resource):
         db.session.add(new_player)
         db.session.commit()
         player_dict=new_player.to_dict()
-        return jsonify(player), 201
+        return jsonify(player_dict), 201
 api.add_resource(Players, '/players')
 
 class PlayerByID(Resource):
     def get(self,id):
-        player=Player.query.filter_by(id=id).first().to_dict()
-        return jsonify(player), 200
+        player=Player.query.filter_by(id=id).first()
+        player_dict=player.to_dict()
+        response=make_response(jsonify(player_dict), 200)
+        return response
     
     def patch(self,id):
         player=Player.query.filter_by(id=id).first()
@@ -48,7 +51,8 @@ class PlayerByID(Resource):
         db.session.add(player)
         db.session.commit()
         player_dict=player.to_dict()
-        return jsonify(player_dict), 200
+        response=make_response(jsonify(player_dict), 200)
+        return response
 
     def delete(self, id):
         player=Player.query.filter_by(id=id).first()
@@ -64,37 +68,48 @@ api.add_resource(PlayerByID, '/players/<int:id>')
 
 class Teams(Resource):
     def get(self):
-        teams=Teams.query.all().to_dict()
-        return jsonify(teams), 200
+        teams=Team.query.all()
+        teams_dict=[team.to_dict() for team in teams]
+        response=make_response(
+            jsonify(teams_dict),
+            200
+        )
+        return response
     
     def post(self):
         json=request.get_json()
         new_team=Team(
             name=json['name'],
-            mascot=json['mascot']
+            mascot=json['mascot'],
+            coach_id=json['coach_id'],
+            player_id=json['player_id']
         )
         db.session.add(new_team)
         db.session.commit()
         team_dict=new_team.to_dict()
-        return jsonify(team_dict), 201
+        response=make_response(jsonify(team_dict), 201)
+        return response
 api.add_resource(Teams, '/teams')
 
-class City(Resource):
+class Coaches(Resource):
     def get(self):
-        cities=City.query.all().to_dict()
-        return jsonify(cities), 200
+        coaches=Coach.query.all()
+        coaches_dict=[coach.to_dict() for coach in coaches]
+        response=make_response(jsonify(coaches_dict), 200)
+        return response
 
     def post(self):
         json=request.get_json()
-        new_city=City(
+        new_coach=Coach(
             name=json['name'],
-            population=json['population']
+            coaching_position=json['coaching_position']
         )
-        db.session.add(new_city)
+        db.session.add(new_coach)
         db.session.commit()
-        city_dict=new_city.to_dict()
-        return jsonify(city_dict), 201
-api.add_resource(City, '/cities')
+        coach_dict=new_coach.to_dict()
+        response=make_response(jsonify(coach_dict), 201)
+        return response
+api.add_resource(Coaches, '/coaches')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

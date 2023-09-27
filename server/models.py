@@ -15,6 +15,8 @@ class Player(db.Model, SerializerMixin):
 
     team=db.relationship('Team', back_populates='player')
 
+    serialize_rules=('-team',)
+
 
 class Coach(db.Model, SerializerMixin):
     __tablename__= 'coaches'
@@ -24,6 +26,8 @@ class Coach(db.Model, SerializerMixin):
     coaching_position=db.Column(db.Integer)
 
     team=db.relationship('Team', back_populates='coach')
+
+    serialize_rules=('-team',)
 
 class Team(db.Model, SerializerMixin):
     __tablename__= 'teams'
@@ -37,3 +41,5 @@ class Team(db.Model, SerializerMixin):
 
     player=db.relationship('Player', back_populates='team')
     coach=db.relationship('Coach', back_populates='team')
+
+    serialize_rules=('-player','-coach')
