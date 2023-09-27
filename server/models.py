@@ -16,14 +16,14 @@ class Player(db.Model, SerializerMixin):
     team=db.relationship('Team', back_populates='player')
 
 
-class City(db.Model, SerializerMixin):
-    __tablename__= 'cities'
+class Coach(db.Model, SerializerMixin):
+    __tablename__= 'coaches'
 
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String, nullable=False, unique=True)
-    population=db.Column(db.Integer)
+    coaching_position=db.Column(db.Integer)
 
-    team=db.relationship('Team', back_populates='city')
+    team=db.relationship('Team', back_populates='coach')
 
 class Team(db.Model, SerializerMixin):
     __tablename__= 'teams'
@@ -33,7 +33,7 @@ class Team(db.Model, SerializerMixin):
     mascot=db.Column(db.String)
 
     player_id=db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False)
-    city_id=db.Column(db.Integer, db.ForeignKey('cities.id'), unique=True)
+    coach_id=db.Column(db.Integer, db.ForeignKey('coaches.id'))
 
     player=db.relationship('Player', back_populates='team')
-    city=db.relationship('City', back_populates='team')
+    coach=db.relationship('Coach', back_populates='team')

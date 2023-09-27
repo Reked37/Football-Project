@@ -8,7 +8,7 @@ from faker import Faker
 import ipdb
 # Local imports
 from app import app
-from models import db, Player, Team, City
+from models import db, Player, Team, Coach
 fake = Faker()
 team_names=['Chargers', 'Cowboys', 'Jets', 'Vikings', 'Browns', 'Cardinals', 'Panthers']
 
@@ -16,34 +16,32 @@ def delete_tables():
     print('Deleting records')
     Team.query.delete()
     Player.query.delete()
-    City.query.delete()
+    Coach.query.delete()
     db.session.commit()
 
-def create_city():
-    print('Creating cities')
-    cities=[]
-    for i in range(10):
-        population=int(fake.random_int(min=100, max=100000))
-        city=City(
-            name=fake.city(),
-            population=population
+def create_coaches():
+    print('Creating coaches')
+    positional_coaching_roles=['Running back', 'Wide Receiver', 'Defensive Linemen', 'Defensive backs', 'Offensive Linemen', 'Quarterback']
+    coaches=[]
+    for i in range(30):
+        
+        coach=Coach(
+            name=fake.name(),
+            coaching_position=rc(positional_coaching_roles)
         )
-        cities.append(city)
+        coaches.append(coach)
             
-    db.session.add_all(cities)
+    db.session.add_all(coaches)
     db.session.commit()
 
 def create_players():
     print('Creating players')
-    teams=Team.query.all()
     players=[]
-    for i in range(10):
-        random_team=rc(teams)
+    for i in range(50):
         player=Player(
             name=fake.name(),
             jersey_number=fake.random_int(min=0, max=99),
         )
-        player.team=random_team
         players.append(player)
 
     db.session.add_all(players)
@@ -51,16 +49,18 @@ def create_players():
 
 def create_teams():
     print('Creating teams')
-    cities=City.query.all()
+    players=Player.query.all()
+    coaches=Coach.query.all()
     teams=[]
-    for i in range(10):
-        selected_city=rc(cities)
+    for i in range(20):
+        random_player=rc(players)
+        random_coach=rc(coaches)
         team=Team(
             name=fake.name(),
             mascot=fake.name(),
-            city=rc(cities)
+            player_id= random_player.id,
+            coach_id=random_coach.id
         )
-        
         teams.append(team)
 
     db.session.add_all(teams)
@@ -69,9 +69,10 @@ def create_teams():
 if __name__ == '__main__':
     with app.app_context():
         delete_tables()
-        create_city()
-        create_teams()
+        create_coaches()
         create_players()
+        create_teams()
+        
         
 #changes cities to coaches
         
