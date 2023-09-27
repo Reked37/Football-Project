@@ -1,38 +1,21 @@
-import React, { useEffect, useState } from "react";
-import {BrowserRouter as Routes, Route } from "react-router-dom";
+import React from "react";
+import {Routes, Route } from "react-router-dom";
 import Home from "./Home";
+import Players from "./Players";
+import NavBar from "./NavBar";
+import Teams from "./Teams";
+import Coaches from "./Coaches";
 
 function App() {
-  const [players, setPlayers]=useState([])
-  const [coaches, setCoaches]=useState([])
-  const [teams, setTeams]=useState([])
-
-  useEffect(()=>{
-    fetch('http://localhost:5555/players')
-    .then(res=>res.json())
-    .then(data=>setPlayers(data),
-  )},[])
-
-  useEffect(()=>{
-    fetch('http://localhost:5555/teams')
-    .then(res=>res.json())
-    .then(data=>setTeams(data),
-  )},[])
-
-  useEffect(()=>{
-    fetch('http://localhost:5555/coaches')
-    .then(res=>res.json())
-    .then(data=>setCoaches(data),
-  )},[])
-
-  console.log('players:', players)
-  console.log('teams:', teams)
-  console.log('coaches:', coaches)
 
   return(
     <div>
+      <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/players" element={<Players />}></Route>
+        <Route path="/coaches" element={<Coaches />}></Route>
+        <Route path="/teams" element={<Teams />}></Route>
       </Routes> 
     </div>
   );

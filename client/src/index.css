@@ -5,3 +5,24 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+.navbar{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  top:0;
+  width:100%;
+}
+.navbar a{
+  color:rgb(85, 30, 136);
+  float:left;
+  padding:10px 30px;
+  display:block;
+  background:green;
+}
+
+.navbar a:hover{
+  background-color: rgb(44, 182, 74);
+}
+.navbar a.active{
+  background-color: rgb(44, 182, 74);
+}
