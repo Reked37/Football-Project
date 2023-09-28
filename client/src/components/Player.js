@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Player({passPlayer, passDeletePlayer}){
-    const {name, jersey_number, team}=passPlayer
+    const {name, jersey_number, team_name}=passPlayer
     const navigate= useNavigate()
     function deletePlayer(){
         fetch(`/players/${passPlayer.id}`,{
@@ -20,7 +20,7 @@ function Player({passPlayer, passDeletePlayer}){
         <div>
             <h3>Name: {name}</h3>
             <h3>#{jersey_number}</h3>
-            <h3>Team: {team.name}</h3>
+            <h3>Team: {team_name}</h3>
             <button type='submit' onClick={updatePlayer}>Update Player</button>
             <button type='submit' onClick={deletePlayer}> Delete Player </button>
         </div>

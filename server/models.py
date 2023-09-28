@@ -15,7 +15,7 @@ class Player(db.Model, SerializerMixin):
     team_name=db.Column(db.Integer, db.ForeignKey('teams.name'))
     team=db.relationship('Team', back_populates='player')
 
-    serialize_rules=('-team.player','-team.coach')
+    serialize_rules=('-team',)
 
 
 class Coach(db.Model, SerializerMixin):

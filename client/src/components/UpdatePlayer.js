@@ -1,15 +1,19 @@
 import React from 'react'
 import {useFormik} from 'formik'
 import { useParams } from 'react-router-dom' 
+import { useNavigate } from 'react-router-dom' 
+
 function UpdatePlayer({players, onUpdatePlayer}){
     const {id}=useParams()
     const player = players.find(player=> player.id === parseInt(id))
+    console.log(player)
+    const navigate=useNavigate()
 
     const formik =useFormik({
         initialValues:{
-            name:"",
-            jersey_number:"",
-            team_name:""
+            name:player.name,
+            jersey_number: player.jersey_number,
+            team_name: player.team_name
         },
         onSubmit:values=>{
             fetch(`/players/${player.id}`,{
@@ -22,6 +26,8 @@ function UpdatePlayer({players, onUpdatePlayer}){
             .then(res=>res.json())
             .then(data=>onUpdatePlayer(data))
             console.log('Updated!')
+            navigate('/players')
+
         }
     })
     

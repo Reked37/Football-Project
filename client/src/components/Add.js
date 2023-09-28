@@ -9,15 +9,15 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             team_name:''
         },
         onSubmit: values =>{
-            fetch('http://127.0.0.1:5555/players',{
+            fetch('/players',{
                 method:"POST",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
             })
             .then(res =>res.json())
-            .then(data=>onPostPlayer(data))
+            .then(data=>{onPostPlayer(data)
             console.log('Submitted')
-            formikPlayer.resetForm()
+            formikPlayer.resetForm()})
         }
     })
 
@@ -27,15 +27,15 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             mascot: ''
         },
         onSubmit: values =>{
-            fetch('http://127.0.0.1:5555/teams',{
+            fetch('/teams',{
                 method:"POST",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
             })
             .then(res =>res.json())
-            .then(data=>onPostTeam(data))
+            .then(data=>{onPostTeam(data)
             console.log('Submitted')
-            formikTeam.resetForm()
+            formikTeam.resetForm()})
         }
     })
 
@@ -46,15 +46,15 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             team_name:""
         },
         onSubmit: values =>{
-            fetch('http://127.0.0.1:5555/coaches',{
+            fetch('/coaches',{
                 method:"POST",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
             })
             .then(res =>res.json())
-            .then(data=>onPostCoach(data))
+            .then(data=>{onPostCoach(data)
             console.log('Submitted')
-            formikCoach.resetForm()
+            formikCoach.resetForm()})
         }
     })
 
