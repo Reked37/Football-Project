@@ -12,7 +12,7 @@ class Player(db.Model, SerializerMixin):
     id= db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String, nullable=False)
     jersey_number= db.Column(db.Integer)
-    team_id=db.Column(db.Integer, db.ForeignKey('teams.id'))
+    team_name=db.Column(db.Integer, db.ForeignKey('teams.name'))
     team=db.relationship('Team', back_populates='player')
 
     serialize_rules=('-team.player','-team.coach')
@@ -24,7 +24,7 @@ class Coach(db.Model, SerializerMixin):
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String, nullable=False, unique=True)
     coaching_position=db.Column(db.Integer)
-    team_id=db.Column(db.Integer, db.ForeignKey('teams.id'))
+    team_name=db.Column(db.Integer, db.ForeignKey('teams.name'))
     team=db.relationship('Team', back_populates='coach')
 
     serialize_rules=('-team.player', '-team.coach')

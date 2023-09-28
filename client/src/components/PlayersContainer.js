@@ -1,10 +1,10 @@
 import React from "react"
 import Player from "./Player"
 
-function PlayersContainer({players}){
+function PlayersContainer({players, onDeletePlayer}){
     console.log(players)
     const displayPlayers=players.map(player=>{
-        return <Player passPlayer={player} key={player.id}/>    
+        return <Player passPlayer={player} key={player.id} passDeletePlayer={onDeletePlayer}/>    
     })
 
     return (

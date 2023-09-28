@@ -10,6 +10,7 @@ function Navbar(){
             <NavLink to="/teams" >Teams</NavLink>
             <NavLink to="/coaches" >Coaches</NavLink>
             <NavLink to="/add" >Add</NavLink>
+            <NavLink to="/update"> Update </NavLink>
         </div>
     )
 }
