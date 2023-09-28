@@ -33,7 +33,8 @@ class Players(Resource):
         db.session.add(new_player)
         db.session.commit()
         player_dict=new_player.to_dict()
-        return jsonify(player_dict), 201
+        response=make_response(jsonify(player_dict), 201)
+        return response
 api.add_resource(Players, '/players')
 
 class PlayerByID(Resource):

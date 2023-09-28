@@ -38,6 +38,13 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             .then(res =>res.json())
             .then(data=>{onPostTeam(data)
             navigate('/teams')})
+        },
+        validate: values =>{
+            let errors={}
+            if (!values.name){
+                errors.name = 'Required'
+            }
+            return errors
         }
     })
 
@@ -75,6 +82,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             <form onSubmit={formikTeam.handleSubmit}>
                 <label> Name: </label>
                 <input value={formikTeam.values.name} id='name' onChange={formikTeam.handleChange}></input>
+                {formikTeam.errors.name ? <div>{formikTeam.errors.name}</div> : null}
                 <label> Mascot: </label>
                 <input values={formikTeam.values.mascot} id='mascot' onChange={formikTeam.handleChange}></input>
                 <button type='submit'> Submit </button>
