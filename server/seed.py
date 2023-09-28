@@ -23,11 +23,13 @@ def create_coaches():
     print('Creating coaches')
     positional_coaching_roles=['Running back', 'Wide Receiver', 'Defensive Linemen', 'Defensive backs', 'Offensive Linemen', 'Quarterback']
     coaches=[]
-    for i in range(30):
-        
+    teams=Team.query.all()
+    for i in range(30): 
+        random_team=rc(teams)
         coach=Coach(
             name=fake.name(),
-            coaching_position=rc(positional_coaching_roles)
+            coaching_position=rc(positional_coaching_roles),
+            team_id=random_team.id
         )
         coaches.append(coach)
             
@@ -36,11 +38,14 @@ def create_coaches():
 
 def create_players():
     print('Creating players')
+    teams=Team.query.all()
     players=[]
     for i in range(50):
+        random_team=rc(teams)
         player=Player(
             name=fake.name(),
             jersey_number=fake.random_int(min=0, max=99),
+            team_id=random_team.id
         )
         players.append(player)
 
@@ -53,13 +58,9 @@ def create_teams():
     coaches=Coach.query.all()
     teams=[]
     for i in range(20):
-        random_player=rc(players)
-        random_coach=rc(coaches)
         team=Team(
             name=fake.name(),
             mascot=fake.name(),
-            player_id= random_player.id,
-            coach_id=random_coach.id
         )
         teams.append(team)
 
@@ -69,9 +70,10 @@ def create_teams():
 if __name__ == '__main__':
     with app.app_context():
         delete_tables()
+        create_teams()
         create_coaches()
         create_players()
-        create_teams()
+        
         
         
 #changes cities to coaches
