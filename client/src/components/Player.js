@@ -1,20 +1,19 @@
 import React from 'react'
-import UpdatePlayer from './UpdatePlayer'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Player({passPlayer, passDeletePlayer}){
     const {name, jersey_number, team}=passPlayer
-
+    const navigate= useNavigate()
     function deletePlayer(){
-        fetch(`http://127.0.0.1:5555/player/${passPlayer.id}`,{
+        fetch(`/players/${passPlayer.id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())
         .then(()=>passDeletePlayer(passPlayer))
     }
 
-    function updatePlayer(passPlayer){
-        Navigate(`/players/${passPlayer.id}`)
+    function updatePlayer(){
+        navigate(`/players/${passPlayer.id}`)
     }
 
     return(

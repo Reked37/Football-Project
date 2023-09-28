@@ -1,6 +1,9 @@
 import React from 'react'
 import {useFormik} from 'formik'
+import { useParams } from 'react-router-dom' 
 function UpdatePlayer({players, onUpdatePlayer}){
+    const {id}=useParams()
+    const player = players.find(player=> player.id === parseInt(id))
 
     const formik =useFormik({
         initialValues:{
@@ -9,7 +12,7 @@ function UpdatePlayer({players, onUpdatePlayer}){
             team_name:""
         },
         onSubmit:values=>{
-            fetch(`http://127.0.0.1:5555/players/${players.id}`,{
+            fetch(`/players/${player.id}`,{
                 method: 'PATCH',
                 headers:{
                     'Content-Type': 'application/json'
@@ -22,10 +25,12 @@ function UpdatePlayer({players, onUpdatePlayer}){
         }
     })
     
+
+
     return(
         <div>
             <h1>Update Player Info</h1>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <label> Name: </label>
                 <input type='text' value={formik.values.name} id='name' onChange={formik.handleChange}></input>
                 <label> Jersey Number: </label>

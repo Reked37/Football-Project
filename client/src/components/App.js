@@ -13,19 +13,19 @@ function App() {
   const [teams, setTeams]=useState([])
   const [coaches, setCoaches]=useState([])
   useEffect(()=>{
-      fetch('http://localhost:5555/players')
+      fetch('/players')
       .then(res=>res.json())
       .then(data=>setPlayers(data),
   )},[])
 
   useEffect(()=>{
-      fetch('http://localhost:5555/teams')
+      fetch('/teams')
       .then(res=>res.json())
       .then(data=>setTeams(data),
     )},[])
   
   useEffect(()=>{
-      fetch('http://localhost:5555/coaches')
+      fetch('/coaches')
       .then(res=>res.json())
       .then(data=>setCoaches(data),
   )},[])
@@ -52,8 +52,8 @@ function App() {
     setPlayers(deletedPlayer)
   }
 
-  function updatePlayer(playersId){
-    console.log(playersId)
+  function handleUpdate(updatedPlayer){
+    setPlayers(players.map(player=> player.id === updatedPlayer.id ? updatedPlayer : player))
   }
 
   return(
@@ -61,15 +61,15 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/players" element={<PlayersContainer players={players} />}></Route>
+        <Route path="/players" element={<PlayersContainer players={players} onDeletePlayer={handleDeletePlayer} />}></Route>
         <Route path="/coaches" element={<CoachesContainer coaches={coaches}/>}></Route>
         <Route path="/teams" element={<TeamsContainer teams={teams}/>}></Route>
         <Route path="/add" element={<Add 
         onPostPlayer={handlePostPlayer} 
         onPostTeam={handlePostTeam}
         onPostCoach={handlePostCoach}
-        onDeletePlayer={handleDeletePlayer}/>}></Route>
-        <Route path='/update' element={<UpdatePlayer navigatePlayer={updatePlayer} />}></Route>
+        />}></Route>
+        <Route path='/players/:id' element={<UpdatePlayer players={players} onUpdatePlayer={handleUpdate}/>}></Route>
       </Routes> 
     </div>
   );

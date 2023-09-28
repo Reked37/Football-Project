@@ -36,9 +36,6 @@ class Team(db.Model, SerializerMixin):
     name=db.Column(db.String, nullable=False)
     mascot=db.Column(db.String)
 
-    # player_id=db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False)
-    # coach_id=db.Column(db.Integer, db.ForeignKey('coaches.id'))
-
     player=db.relationship('Player', back_populates='team')
     coach=db.relationship('Coach', back_populates='team')
 

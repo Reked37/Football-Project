@@ -27,7 +27,8 @@ class Players(Resource):
         json=request.get_json()
         new_player=Player(
             name=json['name'],
-            jersey_number=json['jersey_number']
+            jersey_number=json['jersey_number'],
+            team_name=json['team_name']
         )
         db.session.add(new_player)
         db.session.commit()
@@ -81,8 +82,6 @@ class Teams(Resource):
         new_team=Team(
             name=json['name'],
             mascot=json['mascot'],
-            coach_id=json['coach_id'],
-            player_id=json['player_id']
         )
         db.session.add(new_team)
         db.session.commit()
@@ -102,7 +101,8 @@ class Coaches(Resource):
         json=request.get_json()
         new_coach=Coach(
             name=json['name'],
-            coaching_position=json['coaching_position']
+            coaching_position=json['coaching_position'],
+            team_name=json['team_name']
         )
         db.session.add(new_coach)
         db.session.commit()
