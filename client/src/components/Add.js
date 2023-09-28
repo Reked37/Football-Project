@@ -1,7 +1,10 @@
 import React from 'react'
 import {useFormik} from 'formik'
+import { useNavigate } from 'react-router-dom'
 
 function Add({onPostPlayer, onPostCoach, onPostTeam}){
+  const navigate=useNavigate()
+    
     const formikPlayer= useFormik({
         initialValues:{
             name: "",
@@ -9,6 +12,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             team_name:''
         },
         onSubmit: values =>{
+            console.log('attempting to make new player')
             fetch('/players',{
                 method:"POST",
                 headers:{'Content-Type': 'application/json'},
@@ -16,8 +20,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             })
             .then(res =>res.json())
             .then(data=>{onPostPlayer(data)
-            console.log('Submitted')
-            formikPlayer.resetForm()})
+            navigate('/players')})
         }
     })
 
@@ -34,8 +37,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             })
             .then(res =>res.json())
             .then(data=>{onPostTeam(data)
-            console.log('Submitted')
-            formikTeam.resetForm()})
+            navigate('/teams')})
         }
     })
 
@@ -53,8 +55,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             })
             .then(res =>res.json())
             .then(data=>{onPostCoach(data)
-            console.log('Submitted')
-            formikCoach.resetForm()})
+            navigate('/coaches')})
         }
     })
 
@@ -82,7 +83,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             <form onSubmit={formikCoach.handleSubmit}>
                 <label> Name: </label>
                 <input values={formikCoach.values.name} id='name' onChange={formikCoach.handleChange}></input>
-                <lable> Coaching Position: </lable>
+                <label> Coaching Position: </label>
                 <input values={formikCoach.values.coaching_position} id='coaching_position' onChange={formikCoach.handleChange}></input>
                 <label> Team: </label>
                 <input values={formikCoach.values.team_name} id='team_name' onChange={formikCoach.handleChange}></input>

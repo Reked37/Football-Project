@@ -22,7 +22,7 @@ function Player({passPlayer, passDeletePlayer}){
             <h3>#{jersey_number}</h3>
             <h3>Team: {team_name}</h3>
             <button type='submit' onClick={updatePlayer}>Update Player</button>
-            <button type='submit' onClick={deletePlayer}> Delete Player </button>
+            <button type='submit' onClick={deletePlayer}>Delete Player </button>
         </div>
     )
 }

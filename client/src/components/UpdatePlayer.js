@@ -30,8 +30,6 @@ function UpdatePlayer({players, onUpdatePlayer}){
 
         }
     })
-    
-
 
     return(
         <div>

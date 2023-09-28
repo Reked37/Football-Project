@@ -12,36 +12,35 @@ function App() {
   const [players, setPlayers]=useState([])
   const [teams, setTeams]=useState([])
   const [coaches, setCoaches]=useState([])
+  
   useEffect(()=>{
-      fetch('/players')
-      .then(res=>res.json())
-      .then(data=>setPlayers(data),
+    fetch('/players')
+    .then(res=>res.json())
+    .then(data=>setPlayers(data),
   )},[])
 
   useEffect(()=>{
-      fetch('/teams')
-      .then(res=>res.json())
-      .then(data=>setTeams(data),
+    fetch('/teams')
+    .then(res=>res.json())
+    .then(data=>setTeams(data),
     )},[])
   
   useEffect(()=>{
-      fetch('/coaches')
-      .then(res=>res.json())
-      .then(data=>setCoaches(data),
+    fetch('/coaches')
+    .then(res=>res.json())
+    .then(data=>setCoaches(data),
   )},[])
   
   function handlePostPlayer(newPlayer){
-    console.log(newPlayer)
+    console.log('added a player to state')
     setPlayers([...players,newPlayer])
   }
 
   function handlePostCoach(newCoach){
-    console.log(newCoach)
     setCoaches([...coaches, newCoach])
   }
 
   function handlePostTeam(newTeam){
-    console.log(newTeam)
     setTeams([...teams, newTeam])
   }
 

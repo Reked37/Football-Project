@@ -2,7 +2,6 @@ import React from "react"
 
 
 function Coach({passCoach}){
-    console.log(passCoach)
     const {name, coaching_position}=passCoach
     return (
         <div>
