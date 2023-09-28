@@ -71,7 +71,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
                 <button type='submit'>Submit</button>
             </form>
             <h1>Add Team</h1>
-            <form>
+            <form onSubmit={formikTeam.handleSubmit}>
                 <label> Name: </label>
                 <input value={formikTeam.values.name} id='name' onChange={formikTeam.handleChange}></input>
                 <label> Mascot: </label>
@@ -79,7 +79,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
                 <button type='submit'> Submit </button>
             </form>
             <h1>Add Coach</h1>
-            <form>
+            <form onSubmit={formikCoach.handleSubmit}>
                 <label> Name: </label>
                 <input values={formikCoach.values.name} id='name' onChange={formikCoach.handleChange}></input>
                 <lable> Coaching Position: </lable>
