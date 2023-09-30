@@ -2,6 +2,7 @@ import React from 'react'
 import {Formik, Field, ErrorMessage, Form} from 'formik'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
+
 function Add({onPostPlayer, onPostCoach, onPostTeam}){
     const navigate=useNavigate()
     // Player
@@ -73,9 +74,10 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             <Formik
                 initialValues={initialValuesPlayer}
                 validationSchema={validationSchemaPlayer}
-                onSubmit={onSubmitPlayer} >
-                <Form>
-                    <h1>Add Player</h1>
+                onSubmit={onSubmitPlayer}
+                class='ui form'>
+                <Form class='field'>
+                    <h1 class='headers'>Add Player</h1>
                     <label> Name: </label>
                     <Field type='text' id='name' name='name' ></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
@@ -85,30 +87,30 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
                     <label> Team: </label>
                     <Field type='text'  id='team_name' name='team_name'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' class='ui button'>Submit</button>
                 </Form>
             </Formik>
             <Formik
                 initialValues={initialValuesTeam}
                 validationSchema={validationSchemaTeam}
                 onSubmit={onSubmitTeam}>
-                <Form>
-                    <h1>Add Team</h1>
+                <Form class='field'>
+                    <h1 class='headers'>Add Team</h1>
                     <label> Name: </label>
                     <Field name='name' id='name'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
                     <label> Mascot: </label>
                     <Field  id='mascot' name='mascot' ></Field><br/>
                     <ErrorMessage className='error' name='mascot' component="div"/>
-                    <button type='submit'> Submit </button>
+                    <button type='submit' class='ui button'> Submit </button>
                 </Form>
             </Formik>
             <Formik
                 initialValues={initialValuesCoach}
                 validationSchema={validationSchemaCoach}
                 onSubmit={onSubmitCoach}>
-                <Form>
-                <h1>Add Coach</h1>
+                <Form class='field'>
+                    <h1 class='headers'>Add Coach</h1>
                     <label> Name: </label>
                     <Field  type='text' id='name' name='name' ></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
@@ -118,7 +120,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
                     <label> Team: </label>
                     <Field  type='text' id='team_name' name='team_name'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' class='ui button'>Submit</button>
                 </Form>
             </Formik>
         </div>

@@ -57,3 +57,18 @@
 .meta{
   color:purple
 }
+
+.field{
+  text-align:center;
+}
+
+.paragraph{
+  text-align:center;
+  font-size: 27px;
+  font-family:comisc sans;
+  text-wrap: wrap;
+}
+
+.home-header{
+  text-align: center;
+}
