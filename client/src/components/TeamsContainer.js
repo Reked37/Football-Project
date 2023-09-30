@@ -9,8 +9,8 @@ function TeamsContainer({teams}){
 
     return (
         <div>
-            <h1>Teams in the League</h1>
-            {displayTeams}
+            <h1 class='headers'> Teams in the League</h1>
+            <div class='ui grid container'>{displayTeams}</div>
         </div>
     )}
 

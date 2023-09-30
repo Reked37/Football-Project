@@ -7,6 +7,7 @@ import TeamsContainer from "./TeamsContainer";
 import CoachesContainer from "./CoachesContainer";
 import Add from "./Add"
 import UpdatePlayer from "./UpdatePlayer";
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   const [players, setPlayers]=useState([])
@@ -56,7 +57,7 @@ function App() {
   }
 
   return(
-    <div>
+    <div class='background'>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>

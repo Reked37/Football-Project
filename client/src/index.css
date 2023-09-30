@@ -26,3 +26,34 @@
 .navbar a.active{
   background-color: rgb(44, 182, 74);
 }
+
+.error{
+  color: red;
+  font-size: 14px;
+  margin-left:5px
+}
+
+.ui-card{
+  background: beige;
+}
+
+.background{
+  background: lightcyan
+}
+
+.headers{
+  font-family: Cosmic-sans;
+  text-align: center;
+}
+
+.header{
+  color:blue
+}
+
+.description{
+  color:orange
+}
+
+.meta{
+  color:purple
+}

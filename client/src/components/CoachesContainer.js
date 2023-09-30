@@ -8,8 +8,8 @@ function coachesContainer({coaches}){
 
     return (
         <div>
-            <h1>Coaches in the League</h1>
-            {displayCoaches}
+            <h1 class='headers'>Coaches in the League</h1>
+            <div class='ui grid container cards'>{displayCoaches}</div>
         </div>
     )}
 
