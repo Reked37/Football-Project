@@ -8,7 +8,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
     // Player
     const validationSchemaPlayer= Yup.object({
     name: Yup.string().required('Required'),
-    jersey_number: Yup.number().positive('Jersey Number must be positive').integer('Jersey number Must be an integer').required('Required'),
+    jersey_number: Yup.number().positive('Jersey number must be positive').integer('Jersey number must be an integer').required('Required'),
     team_name: Yup.string().required('Required')
     })
     const initialValuesPlayer={
@@ -17,7 +17,6 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
         team_name:''
     }
     const onSubmitPlayer= values=>{
-        console.log('attempting to make new player')
         fetch('/players',{
             method:"POST",
             headers:{'Content-Type': 'application/json'},
