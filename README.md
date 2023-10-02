@@ -32,8 +32,27 @@
 
 # Files
     Client:
-        
+        - index.js: This file creates and grabs the root that will allow App.js to display all its content in/
+        - index.css: This file contains styling for the website
+        - App.js: This is the main file of the website where all the data fetches are retriveing information through an API. After the data is retrieved it is then set to a state to pass the information to it's proper component.
+        - NavBar.js: This file creates links that allows us to traverse through the website eaiser.
+        - Home.js: This file is a generic file that has no paths yet added to the URL and will be the first thing the site seer sees when it comes to the website.
+        - PlayersContainer.js: This component takes in player data and maps over the data that is passed to another component that creates a card for every data enrtry.
+        - Player.js: This component structures the data from PlayerContainer and allows us to take each data in a data entry and place it on the page.
+        - UpdatePlayer.js: This file is a page where after you click update on the Player page you will be taken to this component where you can update old information from a player.
+        - TeamContainer.js: This component takes in team data and maps over the data that is passed to another component that creates a card for every data enrtry.
+        - Team.js:This component structures the data from TeamContainer and allows us to take each data in a data entry and place it on the page.
+        - UpdatePlayer.js: This file is a page where after you click update on the Player page you will be taken to this component where you can update old information from a player
+        - CoachesContainer.js: This component takes in coach data and maps over the data that is passed to another component that creates a card for every data enrtry.
+        - Coach.js:This component structures the data from CoachContainer and allows us to take each data in a data entry and place it on the page.
+        - UpdatePlayer.js: This file is a page where after you click update on the Player page you will be taken to this component where you can update old information from a player
+
     Server:
+        - App.py: This file creates each view for the website and allows to structure each view with CRUD
+        - Config.py: This file set ups our connection with flask, the database, migrations, api, and cors all into one file to not clutter other files
+        - Seed.py: This file fills in the database with fake entries to test out on the website.
+        - Migrations/Models: These two files store our version of the schema for the database and models structures how the database should look like. 
+        - App.db: This is the database
 
 
 
