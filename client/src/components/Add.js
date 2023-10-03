@@ -73,53 +73,52 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
             <Formik
                 initialValues={initialValuesPlayer}
                 validationSchema={validationSchemaPlayer}
-                onSubmit={onSubmitPlayer}
-                class='ui form'>
-                <Form class='field'>
-                    <h1 class='headers'>Add Player</h1>
-                    <label> Name: </label>
-                    <Field type='text' id='name' name='name' ></Field><br/>
+                onSubmit={onSubmitPlayer}>
+                <Form className='form'><br/>
+                    <h1 className='headers'>Add Player</h1>
+                    <label className='label'> Name: </label>
+                    <Field type='text' id='name' name='name' className='field'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
-                    <label> Jersey Number: </label>
-                    <Field  type='number' id='jersey_number' name='jersey_number'></Field><br/>
+                    <label className='label'> Jersey Number: </label>
+                    <Field  type='number' id='jersey_number' name='jersey_number' className='field'></Field><br/>
                     <ErrorMessage className='error' name='jersey_number' component="div"/>
-                    <label> Team: </label>
-                    <Field type='text'  id='team_name' name='team_name'></Field><br/>
-                    <ErrorMessage className='error' name='team_name' component="div"/>
-                    <button type='submit' class='ui button'>Submit</button>
+                    <label className='label'> Team: </label>
+                    <Field type='text'  id='team_name' name='team_name' className='field'></Field><br/>
+                    <ErrorMessage className='error' name='team_name' component="div"/> <br/>
+                    <button type='submit' className='ui green button'>Submit</button>
                 </Form>
             </Formik>
             <Formik
                 initialValues={initialValuesTeam}
                 validationSchema={validationSchemaTeam}
                 onSubmit={onSubmitTeam}>
-                <Form class='field'>
-                    <h1 class='headers'>Add Team</h1>
-                    <label> Name: </label>
-                    <Field name='name' id='name'></Field><br/>
+                <Form className='form'><br/>
+                    <h1 className='headers'>Add Team</h1>
+                    <label className='label'> Name: </label>
+                    <Field name='name' id='name' className='field'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
-                    <label> Mascot: </label>
-                    <Field  id='mascot' name='mascot' ></Field><br/>
-                    <ErrorMessage className='error' name='mascot' component="div"/>
-                    <button type='submit' class='ui button'> Submit </button>
+                    <label className='label'> Mascot: </label>
+                    <Field  id='mascot' name='mascot' className='field' ></Field><br/>
+                    <ErrorMessage className='error' name='mascot' component="div"/> <br/>
+                    <button type='submit' className='ui green button'> Submit </button>
                 </Form>
             </Formik>
             <Formik
                 initialValues={initialValuesCoach}
                 validationSchema={validationSchemaCoach}
                 onSubmit={onSubmitCoach}>
-                <Form class='field'>
-                    <h1 class='headers'>Add Coach</h1>
-                    <label> Name: </label>
-                    <Field  type='text' id='name' name='name' ></Field><br/>
+                <Form className='form'><br/>
+                    <h1 className='headers'>Add Coach</h1>
+                    <label className='label'> Name: </label>
+                    <Field  type='text' id='name' name='name' className='field'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
-                    <label> Coaching Position: </label>
-                    <Field  type='text' id='coaching_position' name='coaching_position'></Field><br/>
+                    <label className='label'> Coaching Position: </label>
+                    <Field  type='text' id='coaching_position' name='coaching_position' className='field'></Field><br/>
                     <ErrorMessage className='error' name='coaching_position' component="div"/>
-                    <label> Team: </label>
-                    <Field  type='text' id='team_name' name='team_name'></Field><br/>
-                    <ErrorMessage className='error' name='team_name' component="div"/>
-                    <button type='submit' class='ui button'>Submit</button>
+                    <label className='label'> Team: </label>
+                    <Field  type='text' id='team_name' name='team_name' className='field'></Field><br/>
+                    <ErrorMessage className='error' name='team_name' component="div"/><br/>
+                    <button type='submit' className='ui green button'>Submit</button>
                 </Form>
             </Formik>
         </div>

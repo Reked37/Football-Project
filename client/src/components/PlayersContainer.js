@@ -9,7 +9,7 @@ function PlayersContainer({players, onDeletePlayer}){
 
     return (
         <div>
-            <h1 class='headers'>Players in the League</h1>
+            <h1 class='headers'>Players in the League</h1><br/>
             <div class="ui grid container cards">{displayPlayers}</div>
         </div>
     )}

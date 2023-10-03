@@ -29,36 +29,42 @@
 
 .error{
   color: red;
-  font-size: 14px;
-  margin-left:5px
+  font-size: 20px;
+  margin-left:5px;
+  padding: 10px 0px;
 }
 
 .ui-card{
   background: beige;
+  height:auto;
+  width:auto;
 }
 
-.background{
-  background: lightcyan
+body{
+  background: lightcyan;
+  margin: 0;
+  padding:0;
 }
 
 .headers{
   font-family: Cosmic-sans;
   text-align: center;
+  font-size: 50px;
 }
 
-.header{
-  color:blue
+.name{
+  color:red;
 }
 
 .description{
-  color:orange
+  color:rgb(44, 182, 74)
 }
 
 .meta{
-  color:purple
+  color:rgb(44, 182, 74)
 }
 
-.field{
+.form{
   text-align:center;
 }
 
@@ -67,8 +73,32 @@
   font-size: 27px;
   font-family:comisc sans;
   text-wrap: wrap;
+  background-color: aqua;
 }
 
 .home-header{
   text-align: center;
+  font-size: 50px;
+}
+
+.small-image{
+  width: 500px;
+  height:auto;
+  margin-left:auto;
+  margin-right: auto;
+  display:block;
+}
+
+.label{
+  font-size: 23px;
+}
+
+.field{
+  margin:8px 0px;
+}
+
+.side-image{
+  float:right;
+  width:500px;
+  display:flex;
 }

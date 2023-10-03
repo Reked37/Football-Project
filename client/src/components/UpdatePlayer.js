@@ -7,7 +7,7 @@ function UpdatePlayer({players, onUpdatePlayer}){
     const {id}=useParams()
     const player = players.find(player=> player.id === parseInt(id))
     const navigate=useNavigate()
-
+    console.log(player)
     const initialValues={
         name:player.name,
         jersey_number: player.jersey_number,
@@ -31,20 +31,22 @@ function UpdatePlayer({players, onUpdatePlayer}){
     return(
         <div>
             <Formik
-                intialValues={initialValues}
+                initialValues={initialValues}
                 onSubmit={onSubmit}
-                class='ui form'>
-                <Form class='field'>
-                    <h1 class='headers'>Update Player Info</h1>
-                    <label> Name: </label>
-                    <Field type='text' id='name' name='name'></Field>
-                    <lable> Jersey Number: </lable>
-                    <Field type='number' id='jersey_number' name='jersey_number'/>
-                    <label> Team: </label>
-                    <Field type='text' id='team' name='team'/><br/>
-                    <button type='submit' class='ui button'> Submit </button>
+                className='ui form'>
+                <Form className='form'><br/><br/><br/><br/>
+                    <h1 className='headers'>Update Player Info</h1><br/>
+                    <label className='label'> Name: </label>
+                    <Field type='text' id='name' name='name' className='field'></Field><br/>
+                    <label className='label'> Jersey Number: </label>
+                    <Field type='number' id='jersey_number' name='jersey_number' className='field'/><br/>
+                    <label className='label'> Team: </label>
+                    <Field type='text' id='team' name='team_name' className='field'/><br/><br/>
+                    <button type='submit' className='ui green button'> Submit </button>
                 </Form>
-            </Formik>
+            </Formik><br/><br/>
+            <img src='https://www.sharpfootballanalysis.com/wp-content/uploads/2023/02/Super-Bowl-57-preview-scaled.jpg'
+            className='small-image'/>
         </div>
     )
 }
