@@ -118,7 +118,7 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
                     <label className='label'> Team: </label>
                     <Field  type='text' id='team_name' name='team_name' className='field'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/><br/>
-                    <button type='submit' className='ui green button'>Submit</button>
+                    <button type='submit' className='ui green button'>Submit</button><br/><br/>
                 </Form>
             </Formik>
         </div>
