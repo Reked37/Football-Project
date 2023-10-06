@@ -29,7 +29,7 @@ def create_coaches():
         coach=Coach(
             name=fake.name(),
             coaching_position=rc(positional_coaching_roles),
-            team_name=random_team.name
+            team_id=random_team.id
         )
         coaches.append(coach)
             
@@ -45,7 +45,7 @@ def create_players():
         player=Player(
             name=fake.name(),
             jersey_number=fake.random_int(min=0, max=99),
-            team_name=random_team.name
+            team_id=random_team.id
         )
         players.append(player)
 

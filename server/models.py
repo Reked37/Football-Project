@@ -12,8 +12,8 @@ class Player(db.Model, SerializerMixin):
     id= db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String, nullable=False)
     jersey_number= db.Column(db.Integer)
-    team_name=db.Column(db.Integer, db.ForeignKey('teams.name'))
-    team=db.relationship('Team', back_populates='player')
+    team_id=db.Column(db.Integer, db.ForeignKey('teams.id'))
+    team=db.relationship('Team', back_populates='players')
 
     serialize_rules=('-team',)
 
@@ -24,10 +24,10 @@ class Coach(db.Model, SerializerMixin):
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String, nullable=False, unique=True)
     coaching_position=db.Column(db.Integer)
-    team_name=db.Column(db.Integer, db.ForeignKey('teams.name'))
-    team=db.relationship('Team', back_populates='coach')
+    team_id=db.Column(db.Integer, db.ForeignKey('teams.id'))
+    team=db.relationship('Team', back_populates='coaches')
 
-    serialize_rules=('-team.player', '-team.coach')
+    serialize_rules=('-team.players', '-team.coaches')
 
 class Team(db.Model, SerializerMixin):
     __tablename__= 'teams'
@@ -36,7 +36,16 @@ class Team(db.Model, SerializerMixin):
     name=db.Column(db.String, nullable=False)
     mascot=db.Column(db.String)
 
-    player=db.relationship('Player', back_populates='team')
-    coach=db.relationship('Coach', back_populates='team')
+    players=db.relationship('Player', back_populates='team')
+    coaches=db.relationship('Coach', back_populates='team')
 
-    serialize_rules=('-player','-coach')
+    serialize_rules=('-players','-coaches')
+
+# class Fans(db.Model, SerializerMixin):
+#     __tablename__= 'fans'
+
+#     id=db.Column(db.Integer, primary_key=True)
+#     name=db.Column(db.String, nullable=False)
+
+#     player_id=db.Column(db.Integer, db.ForeignKey('players.id'))
+#     player=db.relationship('Player', secondary='players', back_populates='fans')
