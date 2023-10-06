@@ -46,7 +46,7 @@ function UpdatePlayer({players, onUpdatePlayer}){
                 </Form>
             </Formik><br/><br/>
             <img src='https://www.sharpfootballanalysis.com/wp-content/uploads/2023/02/Super-Bowl-57-preview-scaled.jpg'
-            className='small-image'/>
+            className='small-image' alt='quarterback'/>
         </div>
     )
 }

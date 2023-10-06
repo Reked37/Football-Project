@@ -22,7 +22,7 @@ class Player(db.Model, SerializerMixin):
 
     coaches=db.relationship('Coach', secondary=player_coach_association, back_populates='players')
 
-    serialize_rules=('-team',)
+    serialize_rules=('-team', '-coaches')
 
     def __repr__(self):
         return f'Player(id={self.id} name={self.name} jersey_number={self.jersey_number} team_id={self.team_id})'
@@ -34,12 +34,12 @@ class Coach(db.Model, SerializerMixin):
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String, nullable=False, unique=True)
     coaching_position=db.Column(db.Integer)
-
     team_id=db.Column(db.Integer, db.ForeignKey('teams.id'))
+
     team=db.relationship('Team', back_populates='coaches')
     players=db.relationship('Player', secondary=player_coach_association, back_populates='coaches')
 
-    serialize_rules=('-team.players', '-team.coaches')
+    serialize_rules=('-team', '-players')
 
     def __repr__(self):
         return f'Coach(id={self.id} name={self.name} coaching_position={self.coaching_position} team_id={self.team_id})'

@@ -7,7 +7,7 @@ function Home(){
       <h1 class='home-header'>Welcome to the Flatiron Football League!!</h1>
       <br/><br/>
       <img src='https://images.pexels.com/photos/2570139/pexels-photo-2570139.jpeg?cs=srgb&dl=pexels-jeandaniel-francoeur-2570139.jpg&fm=jpg'
-      class='small-image'></img><br/><br/>
+      class='small-image' alt='football'></img><br/><br/>
       <p class='paragraph'>
         Each tab brings you to the list of either players, teams, or coaches
       </p>
