@@ -25,10 +25,15 @@ class Players(Resource):
     
     def post(self):
         json=request.get_json()
+        team_exist=Team.query.filter_by(name=json['team_name']).first()
+
+        # if not team_exist:
+        #     return make_response(jsonify({'error': 'Team does not exist'}), 404)
+
         new_player=Player(
             name=json['name'],
             jersey_number=json['jersey_number'],
-            team_id=json['team_id']
+            team_id=team_exist.id
         )
         db.session.add(new_player)
         db.session.commit()
@@ -100,10 +105,15 @@ class Coaches(Resource):
 
     def post(self):
         json=request.get_json()
+        team_exist=Team.query.filter_by(name=json['team_name']).first()
+
+        # if not team_exist:
+        #     return make_response(jsonify({'error': 'Team does not exist'}), 404)
+
         new_coach=Coach(
             name=json['name'],
             coaching_position=json['coaching_position'],
-            team_id=json['team_id']
+            team_id=team_exist.id
         )
         db.session.add(new_coach)
         db.session.commit()

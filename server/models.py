@@ -6,7 +6,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from config import db
 
 # Models go here!
-player_coach_association=Table('player_coach_association', db.Model.metadata,
+player_coach_association=db.Table('player_coach_association',
 db.Column('player_id', db.Integer, db.ForeignKey('players.id')),
 db.Column('coach_id', db.Integer, db.ForeignKey('coaches.id')))
 

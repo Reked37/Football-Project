@@ -11,7 +11,7 @@ function UpdatePlayer({players, onUpdatePlayer}){
     const initialValues={
         name:player.name,
         jersey_number: player.jersey_number,
-        team_name: player.team_name
+        team_name: player.team.name
     }
     const onSubmit=values=>{
         fetch(`/players/${player.id}`,{
