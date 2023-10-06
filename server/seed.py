@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
-from random import randint, choice as rc
+from random import randint, choice  as rc
 
 # Remote library imports
 from faker import Faker
@@ -67,20 +67,24 @@ def create_teams():
     db.session.add_all(teams)
     db.session.commit()
 
+def player_coach_table():
+    players = Player.query.all()
+    coaches = Coach.query.all()
+
+    for player in players:
+        num_coaches=random.randint(1,30)
+        player_coaches= random.sample(coaches, num_coaches)
+    
+        for coach in player_coaches:
+            player.coaches.append(coach)
+    
+    db.session.commit()
+
 if __name__ == '__main__':
     with app.app_context():
         delete_tables()
         create_teams()
         create_coaches()
         create_players()
-        
-        
-        
-#changes cities to coaches
-        
-        
-       
-
-
-
+        player_coach_table()
         
