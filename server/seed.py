@@ -15,8 +15,9 @@ def delete_tables():
     db.session.execute(player_coach_association.delete())
     db.session.commit()
 
-def create_coaches_and_players(teams):
+def create_coaches_and_players():
     print('Creating coaches and players')
+    teams = Team.query.all()
     positional_coaching_roles = ['Running back', 'Wide Receiver', 'Defensive Linemen', 'Defensive backs', 'Offensive Linemen', 'Quarterback']
     coaches = []
     players = []
@@ -74,6 +75,5 @@ if __name__ == '__main__':
     with app.app_context():
         delete_tables()
         create_teams()
-        teams = Team.query.all()
-        create_coaches_and_players(teams)
+        create_coaches_and_players()
         player_coach_table()
