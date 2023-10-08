@@ -8,6 +8,7 @@ import CoachesContainer from "./CoachesContainer";
 import Add from "./Add"
 import UpdatePlayer from "./UpdatePlayer";
 import ShowPlayersCoaches from "./PlayersCoaches";
+import ShowCoachesPlayers from "./CoachesPlayers";
 import 'semantic-ui-css/semantic.min.css'
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
         />}></Route>
         <Route path='/players/:id' element={<UpdatePlayer players={players} onUpdatePlayer={handleUpdate}/>}></Route>
         <Route path='/playerscoaches/:id' element={<ShowPlayersCoaches players={players}/>}/>
+        <Route path='/coachesplayers/:id' element={<ShowCoachesPlayers coaches={coaches}/>}/>
       </Routes> 
     </div>
   );
