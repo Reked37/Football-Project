@@ -2,7 +2,6 @@ import React from "react"
 import Team from "./Team"
 
 function TeamsContainer({teams}){
-    console.log(teams)
     const displayTeams=teams.map(team=>{
         return <Team passTeam={team} key={team.id}/>    
     })

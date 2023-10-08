@@ -18,7 +18,7 @@ function ShowPlayersCoaches({players}){
         <div>
             <br/><h2 className='headers'>{player.name}'s Coaches</h2>
             <div className='ui grid container cards'>
-            {coaches.map(coach=><Coach passCoach={coach}/>)}
+            {coaches.map(coach=><Coach key={coach.name} passCoach={coach}/>)}
             </div>
         </div>
     )

@@ -2,7 +2,6 @@ import React from "react"
 
 
 function Team({passTeam}){
-    console.log(passTeam)
     const {name, mascot}=passTeam
     return (
         <div class='ui five wide column'>
