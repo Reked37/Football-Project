@@ -7,7 +7,7 @@ function UpdatePlayer({players, onUpdatePlayer}){
     const {id}=useParams()
     const player = players.find(player=> player.id === parseInt(id))
     const navigate=useNavigate()
-    console.log(player)
+ 
     const initialValues={
         name:player.name,
         jersey_number: player.jersey_number,
@@ -23,7 +23,6 @@ function UpdatePlayer({players, onUpdatePlayer}){
         })
         .then(res=>res.json())
         .then(data=>onUpdatePlayer(data))
-        console.log('Updated!')
         navigate('/players')
 
     }

@@ -7,6 +7,7 @@ import TeamsContainer from "./TeamsContainer";
 import CoachesContainer from "./CoachesContainer";
 import Add from "./Add"
 import UpdatePlayer from "./UpdatePlayer";
+import ShowPlayersCoaches from "./PlayersCoaches";
 import 'semantic-ui-css/semantic.min.css'
 
 function App() {
@@ -56,6 +57,8 @@ function App() {
     setPlayers(players.map(player=> player.id === updatedPlayer.id ? updatedPlayer : player))
   }
 
+  
+
   return(
     <div class='background'>
       <NavBar />
@@ -70,6 +73,7 @@ function App() {
         onPostCoach={handlePostCoach}
         />}></Route>
         <Route path='/players/:id' element={<UpdatePlayer players={players} onUpdatePlayer={handleUpdate}/>}></Route>
+        <Route path='/playerscoaches/:id' element={<ShowPlayersCoaches players={players}/>}/>
       </Routes> 
     </div>
   );

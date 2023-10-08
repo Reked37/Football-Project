@@ -14,7 +14,4 @@ function Coach({passCoach}){
     )}
 
 
-
-
-
 export default Coach

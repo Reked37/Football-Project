@@ -16,6 +16,10 @@ function Player({passPlayer, passDeletePlayer}){
         navigate(`/players/${passPlayer.id}`)
     }
 
+    function playersCoaches(){
+        navigate(`/playerscoaches/${passPlayer.id}`)
+    }
+
     return(
         <div className="ui five wide column">
             <div className='ui-card'>
@@ -24,6 +28,7 @@ function Player({passPlayer, passDeletePlayer}){
                 <h3 className='description'>Team: {team.name}</h3>
                 <div>
                     <button type='submit' onClick={updatePlayer} className='ui  blue button'>Update Player</button>
+                    <button type='submit' onClick={playersCoaches} className='ui pink button'> Coaches </button>
                     <button type='submit' onClick={deletePlayer} className='ui red button'>Delete Player </button>
                 </div>
                 
