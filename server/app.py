@@ -140,6 +140,24 @@ class CoachesPlayers(Resource):
 
 api.add_resource(CoachesPlayers, '/coachesplayers/<int:id>')
 
+class TeamPlayers(Resource):
+    def get(self, id):
+        team=Team.query.filter_by(id=id).first()
+        team_players=team.players
+        team_players_dict=[player.to_dict() for player in team.players]
+        return make_response(jsonify(team_players_dict), 200)
+
+api.add_resource(TeamPlayers, '/teamplayers/<int:id>')
+
+class TeamCoaches(Resource):
+    def get(self, id):
+        team=Team.query.filter_by(id=id).first()
+        team_coaches=team.coaches
+        team_coaches__dict=[coach.to_dict() for coach in team_coaches]
+        return make_response(jsonify(team_coaches__dict), 200)
+
+api.add_resource(TeamCoaches, '/teamcoaches/<int:id>')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
 

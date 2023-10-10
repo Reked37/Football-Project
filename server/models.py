@@ -10,15 +10,6 @@ player_coach_association=db.Table('player_coach_association',
 db.Column('player_id', db.Integer, db.ForeignKey('players.id')),
 db.Column('coach_id', db.Integer, db.ForeignKey('coaches.id')))
 
-# player_coach_association=db.Table('player_coach_association',
-# db.Column('player_id', db.Integer, db.ForeignKey('players.id')),
-# db.Column('coach_id', db.Integer, db.ForeignKey('coaches.id')),
-# db.Column('team_id', db.Integer, db.ForeignKey('teams.id')))
-
-# team_players_association=db.Table('team_players',
-# db.Column('team_id', db.Integer, db.ForeignKey('teams.id')),
-# db.Column('player_id')))
-
 class Player(db.Model, SerializerMixin):
     __tablename__ = 'players'
 
