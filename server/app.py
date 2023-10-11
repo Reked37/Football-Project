@@ -27,9 +27,6 @@ class Players(Resource):
         json=request.get_json()
         team_exist=Team.query.filter_by(name=json['team_name']).first()
 
-        # if not team_exist:
-        #     return make_response(jsonify({'error': 'Team does not exist'}), 404)
-
         new_player=Player(
             name=json['name'],
             jersey_number=json['jersey_number'],
@@ -106,9 +103,6 @@ class Coaches(Resource):
     def post(self):
         json=request.get_json()
         team_exist=Team.query.filter_by(name=json['team_name']).first()
-
-        # if not team_exist:
-        #     return make_response(jsonify({'error': 'Team does not exist'}), 404)
 
         new_coach=Coach(
             name=json['name'],
